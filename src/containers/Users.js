@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getUsersList } from '../actions/';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Paper, TextField, RaisedButton } from 'material-ui';
+import { Paper, TextField, RaisedButton, GridList, GridTile, Subheader } from 'material-ui';
 
 import Layout from '../components/Layout';
 
@@ -27,14 +27,28 @@ class Users extends Component {
     render() {
         return (
             <Layout pageTitle='Users list'>
-                {this.props.users.list.map((user) => {
-                    return (
-                        <h1 key={user.id}>{user.name}</h1>
-                    )
-                })}
-                <div onClick={this.loadMoreUsers}>
-                    load
-                </div>
+                <GridList
+                    cellHeight={180}
+                    cols={3}
+                    style={{margin: '0 0 20px'}}>
+                    <Subheader>Users</Subheader>
+                    
+                    {this.props.users.list.map((user) => (
+                        <GridTile
+                            key={user.id}
+                            title={user.first_name}
+                            subtitle={user.last_name}
+                        >
+                        <img src={user.avatar} />
+                    </GridTile>
+                ))}
+                </GridList>
+                <RaisedButton 
+                    label="Load more" 
+                    secondary={true} 
+                    onClick={this.loadMoreUsers}
+                    style={{margin: '0 2px', display: 'block'}}
+                    />
             </Layout>
         )
     }

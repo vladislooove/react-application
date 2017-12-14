@@ -8,6 +8,6 @@ export default {
     },
 
     getUsersList(page){
-        return axios.get(`${apiPrefix}api/login?page=${page}`)
+        return axios.get(`${apiPrefix}api/users?page=${page}`)
     }
 }
