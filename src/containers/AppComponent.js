@@ -8,6 +8,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Home from './Home';
 import Login from './Login';
 import Users from './Users';
+import User from './User';
 import Resources from './Resources';
 
 class AppComponent extends Component{
@@ -34,6 +35,7 @@ class AppComponent extends Component{
                     />
                     <Route path='/login' component={Login} />
                     <Route exact path='/users' component={Users} />
+                    <Route path='/users/:id' component={User} />
                     <Route exact path='/resources' component={Resources} />
                 </Switch>
             )

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import { getUsersList } from '../actions/';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Paper, TextField, RaisedButton, GridList, GridTile, Subheader } from 'material-ui';
+import { RaisedButton, GridList, GridTile, Subheader } from 'material-ui';
 
 import Layout from '../components/Layout';
 
@@ -34,13 +36,16 @@ class Users extends Component {
                     <Subheader>Users</Subheader>
                     
                     {this.props.users.list.map((user) => (
-                        <GridTile
-                            key={user.id}
-                            title={user.first_name}
-                            subtitle={user.last_name}
-                        >
-                        <img src={user.avatar} />
-                    </GridTile>
+                        <Link to={`/users/${user.id}`} 
+                              style={{ textDecoration: 'none' }}>  
+                            <GridTile
+                                key={user.id}
+                                title={user.first_name}
+                                subtitle={user.last_name}
+                            >
+                                <img src={user.avatar} />
+                            </GridTile>
+                        </Link>
                 ))}
                 </GridList>
                 <RaisedButton 
