@@ -15,5 +15,4 @@ export const getUsersList = (page) => {
             page
         }
     }
-
 }

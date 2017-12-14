@@ -11,39 +11,23 @@ import Layout from '../components/Layout';
 class Users extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            page: 1
-        }
-
         this.loadMoreUsers = this.loadMoreUsers.bind(this);
     }
 
     loadMoreUsers(){
-        this.props.getUsersList(this.state.page);
-
-        const nextPage = this.state.page + 1;
-
-        this.setState({
-            page: nextPage
-        })
-        console.log(this.state)
-        console.log(nextPage)
+        this.props.getUsersList(this.props.users.page);
     }
     
     componentDidMount() {
-        if (!this.props.users.length) {
-            this.props.getUsersList(this.state.page);
-
-            this.setState({
-                page: (this.state.page + 1)
-            })
+        if (!this.props.users.list.length) {
+            this.props.getUsersList(this.props.users.page);
         } 
     }
     
     render() {
         return (
             <Layout pageTitle='Users list'>
-                {this.props.users.map((user) => {
+                {this.props.users.list.map((user) => {
                     return (
                         <h1 key={user.id}>{user.name}</h1>
                     )

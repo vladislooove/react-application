@@ -1,14 +1,19 @@
-const users = (state = [], action) => {
+const users = (state = { page: 1, list: [] }, action) => {
     switch (action.type) {
         case 'USERS_LIST_FETCH_SUCCESSED':
-            console.log(action)
-            return action.payload;
+            return {
+                page: action.payload.page,
+                list: [
+                    ...state.list,
+                    ...action.payload.list
+                ]
+            };
 
         case 'USERS_LIST_FETCH_FAILED':
             return false;
 
         default:
-            return [];
+            return state;
     }
 }
 

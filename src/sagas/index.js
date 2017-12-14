@@ -18,10 +18,14 @@ function* logInSaga(action) {
 
 function* getUsersListSaga(action) {
     try {
-        console.log(action)
         const response = yield call(Api.getUsersList, action.payload.page)
-        const data = response.data.data;
-        yield put({ type: "USERS_LIST_FETCH_SUCCESSED", payload: data });
+        yield put({ 
+            type: "USERS_LIST_FETCH_SUCCESSED", 
+            payload: {
+                page: response.data.page + 1,
+                list: response.data.data
+            } 
+        });
     } catch (e) {
         yield put({ type: "USERS_LIST_FETCH_FAILED", message: e.message });
     }
