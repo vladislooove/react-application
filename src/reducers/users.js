@@ -10,7 +10,7 @@ const users = (state = { page: 1, list: [] }, action) => {
             };
 
         case 'USERS_LIST_FETCH_FAILED':
-            return false;
+            return state;
 
         default:
             return state;

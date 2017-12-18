@@ -16,3 +16,21 @@ export const getUsersList = (page) => {
         }
     }
 }
+
+export const getUser = (id) => {
+    return {
+        type: 'USER_FETCH_REQUESTED',
+        payload: {
+            id
+        }
+    }
+}
+
+export const deleteUser = (id) => {
+    return {
+        type: 'USER_DELETE_REQUESTED',
+        payload: {
+            id
+        }
+    }
+}

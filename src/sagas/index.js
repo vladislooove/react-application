@@ -4,7 +4,8 @@ import Api from '../api';
 
 function* mySaga() {
     yield takeEvery("USER_LOGIN_REQUESTED", logInSaga);
-    yield takeEvery('USERS_LIST_FETCH_REQUESTED', getUsersListSaga)
+    yield takeLatest('USERS_LIST_FETCH_REQUESTED', getUsersListSaga);
+    yield takeLatest('USER_FETCH_REQUESTED', getUserSaga);    
 }
 
 function* logInSaga(action) {
@@ -28,6 +29,15 @@ function* getUsersListSaga(action) {
         });
     } catch (e) {
         yield put({ type: "USERS_LIST_FETCH_FAILED", message: e.message });
+    }
+}
+
+function* getUserSaga(action) {
+    try {
+        const response = yield call(Api.getUser, action.payload.id)
+        yield put({ type: "USER_FETCH_SUCCESSED", payload: response.data.data });
+    } catch (e) {
+        yield put({ type: "USER_FETCH_FAILED", message: e.message });
     }
 }
 

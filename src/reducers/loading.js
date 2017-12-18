@@ -18,6 +18,15 @@ const loading = (state = false, action) => {
         case 'USERS_LIST_FETCH_FAILED':
             return false;
 
+        case 'USER_FETCH_REQUESTED':
+            return true;
+
+        case 'USER_FETCH_SUCCESSED':
+            return false;
+
+        case 'USER_FETCH_FAILED':
+            return false;
+
         default:
             return false;
     }

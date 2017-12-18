@@ -7,7 +7,11 @@ export default {
         return axios.post(`${apiPrefix}api/login`, data);
     },
 
-    getUsersList(page){
+    getUsersList(page) {
         return axios.get(`${apiPrefix}api/users?page=${page}`)
+    },
+
+    getUser(id) {
+        return axios.get(`${apiPrefix}api/users/${id}`)        
     }
 }
