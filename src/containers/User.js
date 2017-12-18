@@ -29,6 +29,7 @@ class User extends Component{
 
         this.handleOpen = this.handleOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.deleteUserAction = this.deleteUserAction.bind(this)
     }
     componentWillMount() {
         if(this.props.user.id != this.props.match.params.id) {
@@ -44,7 +45,7 @@ class User extends Component{
         this.setState({dialog: {open: false}});
     }
     
-    deleteUser() {
+    deleteUserAction() {
         this.props.deleteUser(this.props.user.id);
         this.handleClose();
     }
@@ -54,13 +55,13 @@ class User extends Component{
             <FlatButton
                 label="Cancel"
                 primary={true}
-                onClick={this.deleteUser}
+                onClick={this.handleClose}
             />,
             <FlatButton
                 label="Delete"
                 primary={true}
                 keyboardFocused={true}
-                onClick={this.handleClose}
+                onClick={this.deleteUserAction}
             />,
         ];
       

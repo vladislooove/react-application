@@ -13,5 +13,9 @@ export default {
 
     getUser(id) {
         return axios.get(`${apiPrefix}api/users/${id}`)        
+    },
+    
+    deleteUser(id) {
+        return axios.delete(`${apiPrefix}api/users/${id}`)        
     }
 }
