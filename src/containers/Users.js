@@ -37,9 +37,9 @@ class Users extends Component {
                     
                     {this.props.users.list.map((user) => (
                         <Link to={`/users/${user.id}`} 
-                              style={{ textDecoration: 'none' }}>  
+                              style={{ textDecoration: 'none' }}
+                              key={user.id}>  
                             <GridTile
-                                key={user.id}
                                 title={user.first_name}
                                 subtitle={user.last_name}
                             >
