@@ -21,5 +21,9 @@ export default {
 
     updateUser(id, data) {
         return axios.put(`${apiPrefix}api/users/${id}`, data.firstName, data.lastName);        
-    }
+    },
+
+    getResourcesList(page) {
+        return axios.get(`${apiPrefix}api/unknown?page=${page}`);
+    },
 }

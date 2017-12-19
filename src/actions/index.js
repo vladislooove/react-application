@@ -44,3 +44,12 @@ export const updateUser = (id, data) => {
         }
     }
 }
+
+export const getResourcesList = (page) => {
+    return {
+        type: 'RESOURCES_LIST_FETCH_REQUESTED',
+        payload: {
+            page
+        }
+    }
+}
