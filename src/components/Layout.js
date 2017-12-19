@@ -31,6 +31,9 @@ export default class Layout extends Component {
                         open={this.state.open}
                         onRequestChange={(open) => this.setState({ open })}
                     >
+                        <Link to="/" style={{ textDecoration: 'none' }}>
+                            <MenuItem>Dashboard</MenuItem>
+                        </Link>
                         <Link to="/users" style={{ textDecoration: 'none' }}>
                             <MenuItem>Users list</MenuItem>
                         </Link>
