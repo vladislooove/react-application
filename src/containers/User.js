@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getUser, deleteUser } from '../actions/';
+import { getUser, deleteUser, updateUser } from '../actions/';
 
 import Layout from '../components/Layout';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Paper, 
-        TextField, 
+import { TextField, 
         RaisedButton, 
         Tabs, 
         Tab, 
@@ -24,12 +23,18 @@ class User extends Component{
         this.state = {
             dialog: {
                 open: false
-            }
+            },
         }
+
+        this.formData = {
+            firstName: this.props.user.first_name,
+            lastName: this.props.user.last_name
+        };
 
         this.handleOpen = this.handleOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
-        this.deleteUserAction = this.deleteUserAction.bind(this)
+        this.deleteUserAction = this.deleteUserAction.bind(this);
+        this.updateUserAction = this.updateUserAction.bind(this);
     }
     componentWillMount() {
         if(this.props.user.id != this.props.match.params.id) {
@@ -49,6 +54,10 @@ class User extends Component{
         this.props.deleteUser(this.props.user.id);
         this.handleClose();
         this.props.history.push(`/users`)        
+    }
+
+    updateUserAction() {
+        this.props.updateUser(this.props.user.id, this.formData);
     }
 
     render() {
@@ -89,7 +98,28 @@ class User extends Component{
                     </Tab>
                     <Tab label="Update" >
                         <div style={{ padding: '20px' }}>
-                            asd
+                            <TextField
+                                hintText="cityslicka"
+                                floatingLabelText="New first name"
+                                type="text"
+                                style={{ width: '100%', marginBottom: '20px' }}
+                                required
+                                onChange={(event, value) => { this.formData.firstName = value }}
+                            />
+                            <TextField
+                                hintText="cityslicka"
+                                floatingLabelText="New last name"
+                                type="text"
+                                style={{ width: '100%', marginBottom: '20px' }}
+                                required
+                                onChange={(event, value) => { this.formData.lastName = value }}
+                            />
+                            <RaisedButton
+                                label="Update"
+                                secondary
+                                fullWidth
+                                onClick={this.updateUserAction}
+                            />
                         </div>
                     </Tab>
                     <Tab label="Delete" >
@@ -131,6 +161,9 @@ const mapDispatchToProps = dispatch => {
         },
         deleteUser: (id) => {
             dispatch(deleteUser(id));
+        },
+        updateUser: (id, data) => {
+            dispatch(updateUser(id, data));
         }
     }
 }

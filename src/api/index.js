@@ -8,14 +8,18 @@ export default {
     },
 
     getUsersList(page) {
-        return axios.get(`${apiPrefix}api/users?page=${page}`)
+        return axios.get(`${apiPrefix}api/users?page=${page}`);
     },
 
     getUser(id) {
-        return axios.get(`${apiPrefix}api/users/${id}`)        
+        return axios.get(`${apiPrefix}api/users/${id}`);
     },
     
     deleteUser(id) {
-        return axios.delete(`${apiPrefix}api/users/${id}`)        
+        return axios.delete(`${apiPrefix}api/users/${id}`);        
+    },
+
+    updateUser(id, data) {
+        return axios.put(`${apiPrefix}api/users/${id}`, data.firstName, data.lastName);        
     }
 }

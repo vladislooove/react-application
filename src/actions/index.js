@@ -34,3 +34,13 @@ export const deleteUser = (id) => {
         }
     }
 }
+
+export const updateUser = (id, data) => {
+    return {
+        type: 'USER_UPDATE_REQUESTED',
+        payload: {
+            id,
+            data
+        }
+    }
+}

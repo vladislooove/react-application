@@ -36,6 +36,15 @@ const loading = (state = false, action) => {
         case 'USER_DELETE_FAILED':
             return false;
 
+        case 'USER_UPDATE_REQUESTED':
+            return true;
+
+        case 'USER_UPDATE_SUCCESSED':
+            return false;
+
+        case 'USER_UPDATE_FAILED':
+            return false;
+
         default:
             return false;
     }

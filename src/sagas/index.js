@@ -6,7 +6,8 @@ function* mySaga() {
     yield takeEvery("USER_LOGIN_REQUESTED", logInSaga);
     yield takeLatest("USERS_LIST_FETCH_REQUESTED", getUsersListSaga);
     yield takeLatest("USER_FETCH_REQUESTED", getUserSaga); 
-    yield takeEvery("USER_DELETE_REQUESTED", deleteUserSaga);    
+    yield takeEvery("USER_DELETE_REQUESTED", deleteUserSaga);
+    yield takeEvery("USER_UPDATE_REQUESTED", updateUserSaga);  
 }
 
 function* logInSaga(action) {
@@ -48,6 +49,15 @@ function* deleteUserSaga(action) {
         yield put({ type: "USER_DELETE_SUCCESSED" });
     } catch (e) {
         yield put({ type: "USER_DELETE_FAILED", message: e.message });
+    }
+}
+
+function* updateUserSaga(action) {
+    try {
+        const response = yield call(Api.updateUser, action.payload.id, action.payload.data);
+        yield put({ type: "USER_UPDATE_SUCCESSED" });
+    } catch (e) {
+        yield put({ type: "USER_UPDATE_FAILED", message: e.message });
     }
 }
 
