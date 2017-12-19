@@ -48,6 +48,7 @@ class User extends Component{
     deleteUserAction() {
         this.props.deleteUser(this.props.user.id);
         this.handleClose();
+        this.props.history.push(`/users`)        
     }
 
     render() {

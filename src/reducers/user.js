@@ -5,7 +5,7 @@ const user = (state = { }, action) => {
 
         case 'USER_FETCH_FAILED':
             return state;
-
+    
         default:
             return state;
     }

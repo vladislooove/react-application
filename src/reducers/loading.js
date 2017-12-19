@@ -27,6 +27,15 @@ const loading = (state = false, action) => {
         case 'USER_FETCH_FAILED':
             return false;
 
+        case 'USER_DELETE_REQUESTED':
+            return true;
+
+        case 'USER_DELETE_SUCCESSED':
+            return false;
+
+        case 'USER_DELETE_FAILED':
+            return false;
+
         default:
             return false;
     }
