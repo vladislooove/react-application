@@ -45,7 +45,7 @@ function* getUserSaga(action) {
 
 function* deleteUserSaga(action) {
     try {
-        const response = yield call(Api.deleteUser, action.payload.id);
+        yield call(Api.deleteUser, action.payload.id);
         yield put({ type: "USER_DELETE_SUCCESSED" });
     } catch (e) {
         yield put({ type: "USER_DELETE_FAILED", message: e.message });
@@ -54,7 +54,7 @@ function* deleteUserSaga(action) {
 
 function* updateUserSaga(action) {
     try {
-        const response = yield call(Api.updateUser, action.payload.id, action.payload.data);
+        yield call(Api.updateUser, action.payload.id, action.payload.data);
         yield put({ type: "USER_UPDATE_SUCCESSED" });
     } catch (e) {
         yield put({ type: "USER_UPDATE_FAILED", message: e.message });
