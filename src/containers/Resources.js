@@ -12,6 +12,11 @@ import Layout from '../components/Layout';
 class Resources extends Component{
     constructor(props) {
         super(props);
+        this.loadMoreResources = this.loadMoreResources.bind(this);        
+    }
+
+    loadMoreResources(){
+        this.props.getResourcesList(this.props.resources.page);
     }
 
     componentDidMount() {
@@ -53,6 +58,7 @@ class Resources extends Component{
                 <RaisedButton 
                     label="Load more" 
                     secondary={true} 
+                    onClick={this.loadMoreResources}
                     style={{margin: '0 2px', display: 'block'}}
                     />
             </Layout>
