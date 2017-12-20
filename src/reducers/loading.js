@@ -45,6 +45,15 @@ const loading = (state = false, action) => {
         case 'USER_UPDATE_FAILED':
             return false;
 
+        case 'RESOURCES_LIST_FETCH_REQUESTED':
+            return true;
+
+        case 'RESOURCES_LIST_FETCH_SUCCESSED':
+            return false;
+
+        case 'RESOURCES_LIST_FETCH_FAILED':
+            return false;
+
         default:
             return false;
     }
