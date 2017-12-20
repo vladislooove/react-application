@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { getUsersList } from '../actions/';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { RaisedButton, GridList, GridTile, Subheader } from 'material-ui';
 
 import Layout from '../components/Layout';
@@ -43,7 +42,10 @@ class Users extends Component {
                                 title={user.first_name}
                                 subtitle={user.last_name}
                             >
-                                <img src={user.avatar} />
+                                <img 
+                                    src={user.avatar}
+                                    alt={user.first_name}
+                                />
                             </GridTile>
                         </Link>
                 ))}

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { getResourcesList } from '../actions/';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { GridList, GridTile, Subheader, RaisedButton } from 'material-ui';
 
 import Layout from '../components/Layout';

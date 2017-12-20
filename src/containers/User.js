@@ -5,7 +5,6 @@ import { getUser, deleteUser, updateUser } from '../actions/';
 
 import Layout from '../components/Layout';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TextField, 
         RaisedButton, 
         Tabs, 
@@ -37,7 +36,7 @@ class User extends Component{
         this.updateUserAction = this.updateUserAction.bind(this);
     }
     componentWillMount() {
-        if(this.props.user.id != this.props.match.params.id) {
+        if(this.props.user.id !== parseInt(this.props.match.params.id, 10)) {
             this.props.getUser(this.props.match.params.id)
         }
     }
