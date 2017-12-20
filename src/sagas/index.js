@@ -3,11 +3,12 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import Api from '../api';
 
 function* mySaga() {
-    yield takeLatest("USER_LOGIN_REQUESTED", logInSaga);
+    yield takeEvery("USER_LOGIN_REQUESTED", logInSaga);
     yield takeLatest("USERS_LIST_FETCH_REQUESTED", getUsersListSaga);
     yield takeLatest("USER_FETCH_REQUESTED", getUserSaga); 
     yield takeEvery("USER_DELETE_REQUESTED", deleteUserSaga);
     yield takeEvery("USER_UPDATE_REQUESTED", updateUserSaga);  
+    yield takeLatest("RESOURCES_LIST_FETCH_REQUESTED", getResourcesListSaga);    
 }
 
 function* logInSaga(action) {
@@ -58,6 +59,21 @@ function* updateUserSaga(action) {
         yield put({ type: "USER_UPDATE_SUCCESSED" });
     } catch (e) {
         yield put({ type: "USER_UPDATE_FAILED", message: e.message });
+    }
+}
+
+function* getResourcesListSaga(action) {
+    try {
+        const response = yield call(Api.getResourcesList, action.payload.page)
+        yield put({ 
+            type: "RESOURCES_LIST_FETCH_SUCCESSED", 
+            payload: {
+                page: response.data.page + 1,
+                list: response.data.data
+            } 
+        });
+    } catch (e) {
+        yield put({ type: "RESOURCES_LIST_FETCH_FAILED", message: e.message });
     }
 }
 

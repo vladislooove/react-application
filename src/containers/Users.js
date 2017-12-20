@@ -48,7 +48,7 @@ class Users extends Component {
                                 />
                             </GridTile>
                         </Link>
-                ))}
+                    ))}
                 </GridList>
                 <RaisedButton 
                     label="Load more" 

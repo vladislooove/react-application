@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import { getResourcesList } from '../actions/';
 
 import { GridList, GridTile, Subheader, RaisedButton } from 'material-ui';
@@ -27,12 +29,30 @@ class Resources extends Component{
                     style={{margin: '0 0 20px'}}>
                     <Subheader>Resources</Subheader>
                     
-                    {this.props.resources.list.map((resource) => {console.log(resource)})}
+                    {this.props.resources.list.map((resource) => (
+                        <Link to={`/`} 
+                                style={{ textDecoration: 'none' }}
+                                key={resource.id}>  
+                            <GridTile
+                                title={resource.name}
+                                subtitle={resource.pantone_value}
+                            >
+                                <div style={{
+                                    backgroundColor: resource.color,
+                                    height: '180px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    {resource.year}
+                                </div>
+                            </GridTile>
+                        </Link>
+                    ))}
                 </GridList>
                 <RaisedButton 
                     label="Load more" 
                     secondary={true} 
-                    onClick={this.loadMoreUsers}
                     style={{margin: '0 2px', display: 'block'}}
                     />
             </Layout>

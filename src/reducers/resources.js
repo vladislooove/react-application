@@ -1,6 +1,7 @@
 const resources = (state = { page: 1, list: [] }, action) => {
     switch (action.type) {
         case 'RESOURCES_LIST_FETCH_SUCCESSED':
+            console.log(action);
             return {
                 page: action.payload.page,
                 list: [
