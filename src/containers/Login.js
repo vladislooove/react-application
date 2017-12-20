@@ -19,11 +19,14 @@ class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.logIn(
-            this.formData.email,
-            this.formData.password
-        ); 
-        this.props.history.push(`/`)
+
+        if(!this.props.isLoginned.token) {
+            this.props.logIn(
+                this.formData.email,
+                this.formData.password
+            ); 
+            this.props.history.push(`/`)
+        }
     }
 
     render() {
@@ -60,6 +63,12 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isLoginned: state.auth,
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         logIn: (email, password) => {
@@ -69,4 +78,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

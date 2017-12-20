@@ -3,7 +3,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import Api from '../api';
 
 function* mySaga() {
-    yield takeEvery("USER_LOGIN_REQUESTED", logInSaga);
+    yield takeLatest("USER_LOGIN_REQUESTED", logInSaga);
     yield takeLatest("USERS_LIST_FETCH_REQUESTED", getUsersListSaga);
     yield takeLatest("USER_FETCH_REQUESTED", getUserSaga); 
     yield takeEvery("USER_DELETE_REQUESTED", deleteUserSaga);
@@ -13,7 +13,7 @@ function* mySaga() {
 function* logInSaga(action) {
     try {
         const response = yield call(Api.logIn, action.payload)
-        yield put({ type: "USER_LOGIN_SUCCESSED" });
+        yield put({ type: "USER_LOGIN_SUCCESSED", payload: response.data });
     } catch (e) {
         yield put({ type: "USER_LOGIN_FAILED", message: e.message });
     }

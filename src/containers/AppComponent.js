@@ -25,7 +25,7 @@ class AppComponent extends Component{
             return (
                 <Switch>
                     <Route exact path='/' render={() => (
-                        this.props.isLoginned ? (
+                        this.props.isLoginned.token ? (
                             <Home />
                         ) : (
                                 <Redirect to="/login" />

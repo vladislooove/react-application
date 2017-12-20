@@ -1,13 +1,13 @@
-const auth = (state = false, action) => {
+const auth = (state = { token: false }, action) => {
     switch (action.type) {
         case 'USER_LOGIN_SUCCESSED':
-            return true;
+            return action.payload;
 
         case 'USER_LOGIN_FAILED':
-            return false;
+            return state;
             
         default:
-            return false;
+            return state;
     }
 }
 
