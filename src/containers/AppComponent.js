@@ -42,13 +42,7 @@ class AppComponent extends Component{
                     )} />
 
 
-                    <Route path='/users/:id' render={() => (
-                        this.props.isLoginned.token ? (
-                            <User />
-                        ) : (
-                            <Redirect to="/login" />
-                        )
-                    )} />
+                    <Route path='/users/:id' component={User} />
 
                     <Route exact path='/resources' render={() => (
                         this.props.isLoginned.token ? (
