@@ -27,7 +27,8 @@ function* getUsersListSaga(action) {
             type: "USERS_LIST_FETCH_SUCCESSED", 
             payload: {
                 page: response.data.page + 1,
-                list: response.data.data
+                list: response.data.data,
+                totalPages: response.data.total_pages,
             } 
         });
     } catch (e) {

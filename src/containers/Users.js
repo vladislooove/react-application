@@ -22,7 +22,8 @@ class Users extends Component {
     componentDidMount() {
         if (!this.props.users.list.length) {
             this.props.getUsersList(this.props.users.page);
-        } 
+        }
+        console.log(this);
     }
     
     render() {
@@ -50,12 +51,16 @@ class Users extends Component {
                         </Link>
                     ))}
                 </GridList>
-                <RaisedButton 
+                {
+                    this.props.users.page < this.props.users.totalPages &&
+
+                    <RaisedButton 
                     label="Load more" 
                     secondary={true} 
                     onClick={this.loadMoreUsers}
                     style={{margin: '0 2px', display: 'block'}}
                     />
+                }
             </Layout>
         )
     }
