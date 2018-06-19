@@ -50,12 +50,16 @@ class Resources extends Component{
                         </GridTile>
                     ))}
                 </GridList>
-                <RaisedButton 
-                    label="Load more" 
-                    secondary={true} 
-                    onClick={this.loadMoreResources}
-                    style={{margin: '0 2px', display: 'block'}}
-                    />
+                {
+                    this.props.resources.page <= this.props.resources.totalPages &&
+                    
+                    <RaisedButton 
+                        label="Load more" 
+                        secondary={true} 
+                        onClick={this.loadMoreResources}
+                        style={{margin: '0 2px', display: 'block'}}
+                        />
+                }
             </Layout>
         )
     }

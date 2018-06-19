@@ -23,7 +23,6 @@ class Users extends Component {
         if (!this.props.users.list.length) {
             this.props.getUsersList(this.props.users.page);
         }
-        console.log(this);
     }
     
     render() {
@@ -52,7 +51,7 @@ class Users extends Component {
                     ))}
                 </GridList>
                 {
-                    this.props.users.page < this.props.users.totalPages &&
+                    this.props.users.page <= this.props.users.totalPages &&
 
                     <RaisedButton 
                     label="Load more" 

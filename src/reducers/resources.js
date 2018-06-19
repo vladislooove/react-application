@@ -6,7 +6,8 @@ const resources = (state = { page: 1, list: [] }, action) => {
                 list: [
                     ...state.list,
                     ...action.payload.list
-                ]
+                ],
+                totalPages: action.payload.totalPages,
             };
 
         case 'RESOURCES_LIST_FETCH_FAILED':
