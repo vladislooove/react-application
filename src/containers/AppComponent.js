@@ -29,14 +29,36 @@ class AppComponent extends Component{
                             <Home />
                         ) : (
                                 <Redirect to="/login" />
-
                             )
                     )}
                     />
+                    
+                    <Route exact path='/users' render={() => (
+                        this.props.isLoginned.token ? (
+                            <Users />
+                        ) : (
+                            <Redirect to="/login" />
+                        )
+                    )} />
+
+
+                    <Route path='/users/:id' render={() => (
+                        this.props.isLoginned.token ? (
+                            <User />
+                        ) : (
+                            <Redirect to="/login" />
+                        )
+                    )} />
+
+                    <Route exact path='/resources' render={() => (
+                        this.props.isLoginned.token ? (
+                            <Resources />
+                        ) : (
+                            <Redirect to="/login" />
+                        )
+                    )} />
+                    
                     <Route path='/login' component={Login} />
-                    <Route exact path='/users' component={Users} />
-                    <Route path='/users/:id' component={User} />
-                    <Route exact path='/resources' component={Resources} />
                 </Switch>
             )
         }
